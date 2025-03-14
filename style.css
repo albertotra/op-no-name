@@ -1,0 +1,133 @@
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.terminal {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0f0;
+    width: 600px;
+    max-width: 90%;
+}
+
+#output {
+    height: 300px;
+    overflow-y: scroll;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding-bottom: 10px;
+}
+
+#input {
+    width: 100%;
+    border: none;
+    background: none;
+    color: #0f0;
+    font-size: 16px;
+    outline: none;
+}
+
+.title-bar {
+    background-color: #111;
+    color: #0f0;
+    padding: 5px;
+    cursor: move;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+/* Close button style */
+.close-btn {
+    background-color: #111;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* Stile della barra di scorrimento per browser WebKit (Chrome, Safari) */
+#output::-webkit-scrollbar {
+    width: 10px; /* Larghezza della scrollbar */
+}
+
+#output::-webkit-scrollbar-track {
+    background: #111; /* Colore dello sfondo della track (binario) */
+    border-radius: 5px;
+}
+
+#output::-webkit-scrollbar-thumb {
+    background-color: #0f0; /* Colore della barra di scorrimento */
+    border-radius: 5px; /* Arrotonda i bordi */
+    border: 2px solid #111; /* Spazio tra la scrollbar e il bordo del div */
+}
+
+#output::-webkit-scrollbar-thumb:hover {
+    background-color: #0c0; /* Colore della barra di scorrimento al passaggio del mouse */
+}
+
+/* Per Firefox */
+#output {
+    scrollbar-width: thin; /* Larghezza ridotta */
+    scrollbar-color: #0f0 #111; /* Colore della barra di scorrimento e sfondo */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Impedisce lo scroll sia orizzontale che verticale */
+    width: 100%;
+    height: 100%;
+}
+
+#desktop {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Impedisce lo scroll anche a questo livello */
+    color: #0f0;
+    background-image: url(images/green-back.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Posizionamento per entrambi i terminal */
+#draggable-terminal, #video-terminal {
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Stile specifico per il terminal video */
+#video-terminal {
+    width: 80vw; /* 80% della larghezza della viewport */
+    height: 80vh; /* 80% dell'altezza della viewport */
+    max-width: 80%; /* Assicura che non superi l'80% in larghezza */
+}
+
+.video-container {
+    padding: 10px;
+    height: calc(100% - 30px); /* Altezza totale meno l'altezza della barra del titolo */
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    object-fit: contain; /* Mantiene le proporzioni del video */
+}
+
+/* Aggiungi più compatibilità per altri browser */
