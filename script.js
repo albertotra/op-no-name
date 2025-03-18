@@ -158,6 +158,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Impedisci comportamenti predefiniti di refresh/navigazione
     preventDefaultBrowserBehaviors();
     
+    // Nascondi il terminale all'inizio
+    const terminal = document.getElementById('draggable-terminal');
+    if (terminal) {
+        terminal.style.display = 'none';
+    }
+    
     // Gestione fullscreen iniziale
     setupFullscreenPrompt();
     
@@ -255,6 +261,12 @@ function setupFullscreenPrompt() {
     fullscreenButton.addEventListener('click', function() {
         requestFullScreen();
         overlay.remove(); // Rimuovi l'overlay e il bottone
+        
+        // Mostra il terminale
+        const terminal = document.getElementById('draggable-terminal');
+        if (terminal) {
+            terminal.style.display = 'block';
+        }
         
         // Avvia le funzioni originali
         executeCommand();
