@@ -10,10 +10,11 @@ body {
 }
 
 .terminal {
-    background-color: #111;
+    background-color: rgba(17, 17, 17, 0.9); /* Sfondo leggermente trasparente */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px #0f0;
+    border: 2px solid #0f0; /* Bordo verde brillante */
+    box-shadow: 0 0 15px #0f0, inset 0 0 10px rgba(15, 255, 15, 0.3); /* Glow esterno e interno */
     width: 600px;
     max-width: 90%;
 }
@@ -36,7 +37,7 @@ body {
 }
 
 .title-bar {
-    background-color: #111;
+    background-color: rgba(17, 17, 17, 0.95);
     color: #0f0;
     padding: 5px;
     cursor: move;
@@ -46,15 +47,17 @@ body {
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    border-bottom: 1px solid #0f0; /* Aggiunge una linea di separazione */
 }
 
 /* Close button style */
 .close-btn {
-    background-color: #111;
+    background-color: #0f0;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     display: inline-block;
+    box-shadow: 0 0 5px #0f0; /* Aggiunge glow */
 }
 
 /* Stile della barra di scorrimento per browser WebKit (Chrome, Safari) */
@@ -94,12 +97,13 @@ html, body {
 #desktop {
     width: 100vw;
     height: 100vh;
-    overflow: hidden; /* Impedisce lo scroll anche a questo livello */
+    overflow: hidden;
     color: #0f0;
     background-image: url(images/green-back.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
 }
 
 /* Posizionamento per entrambi i terminal */
@@ -116,11 +120,14 @@ html, body {
     width: 80vw; /* 80% della larghezza della viewport */
     height: 80vh; /* 80% dell'altezza della viewport */
     max-width: 80%; /* Assicura che non superi l'80% in larghezza */
+    border: 2px solid #0f0;
+    box-shadow: 0 0 15px #0f0, inset 0 0 10px rgba(15, 255, 15, 0.3);
 }
 
 .video-container {
     padding: 10px;
     height: calc(100% - 30px); /* Altezza totale meno l'altezza della barra del titolo */
+    border: 1px solid rgba(15, 255, 15, 0.3);
 }
 
 video {
@@ -130,4 +137,15 @@ video {
     object-fit: contain; /* Mantiene le proporzioni del video */
 }
 
-/* Aggiungi più compatibilità per altri browser */
+/* Stile per le cartelle del desktop */
+.desktop-folder {
+    transition: all 0.2s ease;
+}
+
+.desktop-folder:hover {
+    transform: scale(1.05);
+}
+
+.desktop-folder:active {
+    transform: scale(0.95);
+}
