@@ -234,7 +234,7 @@ function setupFullscreenPrompt() {
     
     // Crea il bottone fullscreen
     var fullscreenButton = document.createElement('button');
-    fullscreenButton.innerHTML = "INIZIA SESSIONE";
+    fullscreenButton.innerHTML = "LOGIN";
     fullscreenButton.style.backgroundColor = "#111";
     fullscreenButton.style.color = "#0f0";
     fullscreenButton.style.border = "2px solid #0f0";
