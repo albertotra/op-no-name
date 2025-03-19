@@ -63,7 +63,7 @@ input.addEventListener("keyup", function (event) {
 
         // Check if input matches the password
         if (userInput === correctPassword) {
-            writeOutput("> Accesso consentito!");
+            writeOutput("> Access granted!");
 
             // Aspetta un secondo prima di passare al video player
             setTimeout(() => {
@@ -85,7 +85,7 @@ input.addEventListener("keyup", function (event) {
                 );
             }, 1000);
         } else {
-            writeOutput("> Accesso non consentito!");
+            writeOutput("> Access denied!");
         }
 
         input.value = ""; // Clear input field after checking
