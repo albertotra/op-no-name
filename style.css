@@ -209,3 +209,15 @@ video {
     scrollbar-width: thin; /* Larghezza ridotta */
     scrollbar-color: #0f0 #111; /* Colore della barra di scorrimento e sfondo */
 }
+
+.code-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bold;
+    color: #0f0;
+    z-index: 30;
+    pointer-events: none;
+}

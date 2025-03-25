@@ -387,11 +387,11 @@ function handleFolderClick(folderName) {
     }
 }
 
-// Funzione per creare il terminale PROJECT_ALPHA
+// Find the existing script.js code, and modify the following functions:
+
 function createProjectAlphaWindow() {
     const title = "PROJECT_ALPHA";
     
-    // Crea un nuovo terminale per visualizzare le informazioni
     const infoTerminal = document.createElement('div');
     infoTerminal.className = 'terminal';
     infoTerminal.dataset.folderName = title;
@@ -400,12 +400,10 @@ function createProjectAlphaWindow() {
     infoTerminal.style.width = '500px';
     infoTerminal.style.maxHeight = '400px';
     
-    // Crea la barra del titolo
     const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
     titleBar.innerHTML = `<span>${title}</span>`;
     
-    // Aggiungi il pulsante di chiusura
     const closeBtn = document.createElement('div');
     closeBtn.className = 'close-btn';
     closeBtn.addEventListener('click', function() {
@@ -414,45 +412,37 @@ function createProjectAlphaWindow() {
     });
     titleBar.appendChild(closeBtn);
     
-    // Crea l'area di output per il contenuto
     const content = document.createElement('div');
     content.id = `info-output-${title}`;
     content.style.height = '300px';
     content.style.overflowY = 'auto';
-    content.style.whiteSpace = 'pre-wrap';
-    content.style.wordWrap = 'break-word';
-    content.style.padding = '10px';
+    content.style.display = 'flex';
+    content.style.justifyContent = 'center';
+    content.style.alignItems = 'center';
     
-    // Aggiungi il contenuto specifico di PROJECT_ALPHA
-    content.innerHTML = `PROJECT_ALPHA - TOP SECRET<br>
-    Status: Active<br>
-    Clearance Level: Delta-9<br>
-    Project Lead: Dr. Marcus Chen<br>
-    Objective: Development of advanced neural interface technology<br>
-    Budget: $127.4M<br>
-    Timeline: Phase 3 - Implementation<br>`;
+    const gif = document.createElement('img');
+    gif.src = 'images/green-graph.gif';
+    gif.style.width = '100%';  // Fill width of container
+    gif.style.height = '100%'; // Fill height of container
+    gif.style.objectFit = 'contain'; // contain entire area while maintaining aspect ratio
+    gif.style.maxWidth = '100%';
+    gif.style.maxHeight = '100%';
     
-    // TODO: Aggiungere funzionalità specifiche per PROJECT_ALPHA
-    // Per esempio: un bottone per aprire schemi del progetto, o un campo di ricerca per documenti specifici
+    content.appendChild(gif);
     
-    // Assembla il terminale
     infoTerminal.appendChild(titleBar);
     infoTerminal.appendChild(content);
 
     applyScrollbarStyles(content);
     
-    // Aggiungi il terminale al desktop
     document.getElementById('desktop').appendChild(infoTerminal);    
-    // Rendi il terminale trascinabile
     setupDraggable(infoTerminal, titleBar);
     positionRandomlyWithinScreen(infoTerminal);
 }
 
-// Funzione per creare il terminale OPERATION_NEXUS
 function createOperationNexusWindow() {
     const title = "OPERATION_NEXUS";
     
-    // Crea un nuovo terminale per visualizzare le informazioni
     const infoTerminal = document.createElement('div');
     infoTerminal.className = 'terminal';
     infoTerminal.dataset.folderName = title;
@@ -461,12 +451,10 @@ function createOperationNexusWindow() {
     infoTerminal.style.width = '500px';
     infoTerminal.style.maxHeight = '400px';
     
-    // Crea la barra del titolo
     const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
     titleBar.innerHTML = `<span>${title}</span>`;
     
-    // Aggiungi il pulsante di chiusura
     const closeBtn = document.createElement('div');
     closeBtn.className = 'close-btn';
     closeBtn.addEventListener('click', function() {
@@ -475,46 +463,38 @@ function createOperationNexusWindow() {
     });
     titleBar.appendChild(closeBtn);
     
-    // Crea l'area di output per il contenuto
     const content = document.createElement('div');
     content.id = `info-output-${title}`;
     content.style.height = '300px';
     content.style.overflowY = 'auto';
-    content.style.whiteSpace = 'pre-wrap';
-    content.style.wordWrap = 'break-word';
-    content.style.padding = '10px';
+    content.style.display = 'flex';
+    content.style.justifyContent = 'center';
+    content.style.alignItems = 'center';
     
-    // Aggiungi il contenuto specifico di OPERATION_NEXUS
-    content.innerHTML = `OPERATION_NEXUS - TOP SECRET<br>
-    Status: In Progress<br>
-    Location: Multiple sites across Eastern Europe<br>
-    Operatives Deployed: 14<br>
-    Mission Objective: Intelligence gathering on Quantum OS<br>
-    Expected Completion: 47 days<br>
-    Risk Assessment: Medium-High<br>`;
-    //
-    // TODO: Aggiungere funzionalità specifiche per OPERATION_NEXUS
-    // Per esempio: mappa interattiva dei siti operativi, o stato in tempo reale degli agenti
+    const gif = document.createElement('img');
+    gif.src = 'images/satellite.gif';
+    gif.style.width = '100%';  // Fill width of container
+    gif.style.height = '100%'; // Fill height of container
+    gif.style.objectFit = 'contain'; // contain entire area while maintaining aspect ratio
+    gif.style.maxWidth = '100%';
+    gif.style.maxHeight = '100%';
     
-    // Assembla il terminale
+    content.appendChild(gif);
+    
     infoTerminal.appendChild(titleBar);
     infoTerminal.appendChild(content);
     
     applyScrollbarStyles(content);
 
-    // Aggiungi il terminale al desktop
     document.getElementById('desktop').appendChild(infoTerminal);
     
-    // Rendi il terminale trascinabile
     setupDraggable(infoTerminal, titleBar);
     positionRandomlyWithinScreen(infoTerminal);
 }
 
-// Funzione per creare il terminale CLASSIFIED_DATA
 function createClassifiedDataWindow() {
     const title = "CLASSIFIED_DATA";
     
-    // Crea un nuovo terminale per visualizzare le informazioni
     const infoTerminal = document.createElement('div');
     infoTerminal.className = 'terminal';
     infoTerminal.dataset.folderName = title;
@@ -523,12 +503,10 @@ function createClassifiedDataWindow() {
     infoTerminal.style.width = '500px';
     infoTerminal.style.maxHeight = '400px';
     
-    // Crea la barra del titolo
     const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
     titleBar.innerHTML = `<span>${title}</span>`;
     
-    // Aggiungi il pulsante di chiusura
     const closeBtn = document.createElement('div');
     closeBtn.className = 'close-btn';
     closeBtn.addEventListener('click', function() {
@@ -537,62 +515,50 @@ function createClassifiedDataWindow() {
     });
     titleBar.appendChild(closeBtn);
     
-    // Crea l'area di output per il contenuto
     const content = document.createElement('div');
     content.id = `info-output-${title}`;
     content.style.height = '300px';
     content.style.overflowY = 'auto';
-    content.style.whiteSpace = 'pre-wrap';
-    content.style.wordWrap = 'break-word';
-    content.style.padding = '10px';
+    content.style.display = 'flex';
+    content.style.justifyContent = 'center';
+    content.style.alignItems = 'center';
     
-    // Aggiungi il contenuto specifico di CLASSIFIED_DATA
-    content.innerHTML = `CLASSIFIED_DATA - TOP SECRET<br>
-    Database Status: Encrypted<br>
-    Last Update: 72 hours ago<br>
-    Data Categories:<br>
-    - Cryptographic Keys<br>
-    - Agent Identities<br>
-    - Operation Parameters<br>
-    - Asset Locations<br>
-    Security Breach Attempts: 17 (All Failed)<br>`;
+    const gif = document.createElement('img');
+    gif.src = 'images/globe.gif';
+    gif.style.width = '100%';  // Fill width of container
+    gif.style.height = '100%'; // Fill height of container
+    gif.style.objectFit = 'contain'; // contain entire area while maintaining aspect ratio
+    gif.style.maxWidth = '100%';
+    gif.style.maxHeight = '100%';
     
-    // TODO: Aggiungere funzionalità specifiche per CLASSIFIED_DATA
-    // Per esempio: simulazione di un terminale di accesso al database, visualizzazione crittografata dei dati
+    content.appendChild(gif);
     
-    // Assembla il terminale
     infoTerminal.appendChild(titleBar);
     infoTerminal.appendChild(content);
 
     applyScrollbarStyles(content);
     
-    // Aggiungi il terminale al desktop
     document.getElementById('desktop').appendChild(infoTerminal);
     
-    // Rendi il terminale trascinabile
     setupDraggable(infoTerminal, titleBar);
     positionRandomlyWithinScreen(infoTerminal);
 }
 
-// Funzione per creare il terminale SECURITY_PROTOCOLS
 function createSecurityProtocolsWindow() {
     const title = "SECURITY_PROTOCOLS";
     
-    // Crea un nuovo terminale per visualizzare le informazioni
     const infoTerminal = document.createElement('div');
     infoTerminal.className = 'terminal';
     infoTerminal.dataset.folderName = title;
     infoTerminal.style.position = 'absolute';
     infoTerminal.style.zIndex = '2000';
-    infoTerminal.style.width = '500px';
-    infoTerminal.style.maxHeight = '400px';
+    infoTerminal.style.width = '1000px';
+    infoTerminal.style.maxHeight = '800px';
     
-    // Crea la barra del titolo
     const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
     titleBar.innerHTML = `<span>${title}</span>`;
     
-    // Aggiungi il pulsante di chiusura
     const closeBtn = document.createElement('div');
     closeBtn.className = 'close-btn';
     closeBtn.addEventListener('click', function() {
@@ -601,47 +567,44 @@ function createSecurityProtocolsWindow() {
     });
     titleBar.appendChild(closeBtn);
     
-    // Crea l'area di output per il contenuto
     const content = document.createElement('div');
     content.id = `info-output-${title}`;
-    content.style.height = '300px';
+    content.style.height = '600px';
     content.style.overflowY = 'auto';
-    content.style.whiteSpace = 'pre-wrap';
-    content.style.wordWrap = 'break-word';
-    content.style.padding = '10px';
+    content.style.display = 'flex';
+    content.style.justifyContent = 'center';
+    content.style.alignItems = 'center';
     
-    // Aggiungi il contenuto specifico di SECURITY_PROTOCOLS
-    content.innerHTML = `SECURITY_PROTOCOLS - TOP SECRET<br>
-    Current Threat Level: AMBER<br>
-    Authentication Protocol: Delta-7<br>
-    Communication Encryption: AES-512<br>
-    Physical Security: Level 4<br>
-    Emergency Response Team: STANDBY<br>
-    Last Protocol Update: 14 days ago<br>
-    Authorized Personnel: 23<br>`;
+    const gif = document.createElement('img');
+    gif.src = 'images/console.gif';
+    gif.style.width = '100%';  // Fill width of container
+    gif.style.height = '100%'; // Fill height of container
+    gif.style.objectFit = 'contain'; // contain entire area while maintaining aspect ratio
+    gif.style.maxWidth = '100%';
+    gif.style.maxHeight = '100%';
     
-    // TODO: Aggiungere funzionalità specifiche per SECURITY_PROTOCOLS
-    // Per esempio: visualizzazione di una piantina dell'edificio con livelli di sicurezza, o pannello di controllo accessi
-    
-    // Assembla il terminale
+    content.appendChild(gif);
+    const CODE_OVERLAY = document.createElement('div');
+    CODE_OVERLAY.id = `code-overlay-${title}`;
+    CODE_OVERLAY.classList.add('code-overlay');
+
+    content.appendChild(CODE_OVERLAY);
+
     infoTerminal.appendChild(titleBar);
     infoTerminal.appendChild(content);
 
     applyScrollbarStyles(content);
     
-    // Aggiungi il terminale al desktop
     document.getElementById('desktop').appendChild(infoTerminal);
     
-    // Rendi il terminale trascinabile
     setupDraggable(infoTerminal, titleBar);
     positionRandomlyWithinScreen(infoTerminal);
+    animateCode(`code-overlay-${title}`);
 }
 
-// Funzione per creare il terminale MISSION_LOGS
 function createMissionLogsWindow() {
     const title = "MISSION_LOGS";
     
-    // Crea un nuovo terminale per visualizzare le informazioni
     const infoTerminal = document.createElement('div');
     infoTerminal.className = 'terminal';
     infoTerminal.dataset.folderName = title;
@@ -650,12 +613,10 @@ function createMissionLogsWindow() {
     infoTerminal.style.width = '500px';
     infoTerminal.style.maxHeight = '400px';
     
-    // Crea la barra del titolo
     const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
     titleBar.innerHTML = `<span>${title}</span>`;
     
-    // Aggiungi il pulsante di chiusura
     const closeBtn = document.createElement('div');
     closeBtn.className = 'close-btn';
     closeBtn.addEventListener('click', function() {
@@ -664,48 +625,38 @@ function createMissionLogsWindow() {
     });
     titleBar.appendChild(closeBtn);
     
-    // Crea l'area di output per il contenuto
     const content = document.createElement('div');
     content.id = `info-output-${title}`;
     content.style.height = '300px';
     content.style.overflowY = 'auto';
-    content.style.whiteSpace = 'pre-wrap';
-    content.style.wordWrap = 'break-word';
-    content.style.padding = '10px';
+    content.style.display = 'flex';
+    content.style.justifyContent = 'center';
+    content.style.alignItems = 'center';
     
-    // Aggiungi il contenuto specifico di MISSION_LOGS
-    content.innerHTML = `MISSION_LOGS - TOP SECRET<br>
-    Recent Operations:<br>
-    - SILENT HAWK: Completed<br>
-    - IRON FORTRESS: In Progress<br>
-    - MIDNIGHT ECHO: Planning Phase<br>
-    - CRYSTAL SHIELD: Aborted<br>
-    Success Rate: 78%<br>
-    Casualties: 2<br>
-    Assets Recovered: 14<br>`;
+    const gif = document.createElement('img');
+    gif.src = 'images/wait.gif';
+    gif.style.width = '100%';  // Fill width of container
+    gif.style.height = '100%'; // Fill height of container
+    gif.style.objectFit = 'contain'; // contain entire area while maintaining aspect ratio
+    gif.style.maxWidth = '100%';
+    gif.style.maxHeight = '100%';
     
-    // TODO: Aggiungere funzionalità specifiche per MISSION_LOGS
-    // Per esempio: diario di missione navigabile, report dettagliati per ogni operazione
+    content.appendChild(gif);
     
-    // Assembla il terminale
     infoTerminal.appendChild(titleBar);
     infoTerminal.appendChild(content);
 
     applyScrollbarStyles(content);
     
-    // Aggiungi il terminale al desktop
     document.getElementById('desktop').appendChild(infoTerminal);
     
-    // Rendi il terminale trascinabile
     setupDraggable(infoTerminal, titleBar);
     positionRandomlyWithinScreen(infoTerminal);
 }
 
-// Funzione per creare il terminale PERSONNEL_FILES
 function createPersonnelFilesWindow() {
     const title = "PERSONNEL_FILES";
     
-    // Crea un nuovo terminale per visualizzare le informazioni
     const infoTerminal = document.createElement('div');
     infoTerminal.className = 'terminal';
     infoTerminal.dataset.folderName = title;
@@ -714,12 +665,10 @@ function createPersonnelFilesWindow() {
     infoTerminal.style.width = '500px';
     infoTerminal.style.maxHeight = '400px';
     
-    // Crea la barra del titolo
     const titleBar = document.createElement('div');
     titleBar.className = 'title-bar';
     titleBar.innerHTML = `<span>${title}</span>`;
     
-    // Aggiungi il pulsante di chiusura
     const closeBtn = document.createElement('div');
     closeBtn.className = 'close-btn';
     closeBtn.addEventListener('click', function() {
@@ -728,43 +677,34 @@ function createPersonnelFilesWindow() {
     });
     titleBar.appendChild(closeBtn);
     
-    // Crea l'area di output per il contenuto
     const content = document.createElement('div');
     content.id = `info-output-${title}`;
     content.style.height = '300px';
     content.style.overflowY = 'auto';
-    content.style.whiteSpace = 'pre-wrap';
-    content.style.wordWrap = 'break-word';
-    content.style.padding = '10px';
+    content.style.display = 'flex';
+    content.style.justifyContent = 'center';
+    content.style.alignItems = 'center';
     
-    // Aggiungi il contenuto specifico di PERSONNEL_FILES
-    content.innerHTML = `PERSONNEL_FILES - TOP SECRET<br>
-    Active Agents: 42<br>
-    Field Operatives: 26<br>
-    Analysts: 11<br>
-    Technical Support: 5<br>
-    Medical Personnel: 3<br>
-    Deep Cover Assets: 7<br>
-    Recruitment Status: Ongoing<br>
-    Training Program: Advanced<br>`;
+    const gif = document.createElement('img');
+    gif.src = 'images/satellite.gif';
+    gif.style.width = '100%';  // Fill width of container
+    gif.style.height = '100%'; // Fill height of container
+    gif.style.objectFit = 'contain'; // contain entire area while maintaining aspect ratio
+    gif.style.maxWidth = '100%';
+    gif.style.maxHeight = '100%';
     
-    // TODO: Aggiungere funzionalità specifiche per PERSONNEL_FILES
-    // Per esempio: database di personale navigabile, schede agente con foto e dettagli
+    content.appendChild(gif);
     
-    // Assembla il terminale
     infoTerminal.appendChild(titleBar);
     infoTerminal.appendChild(content);
 
     applyScrollbarStyles(content);
     
-    // Aggiungi il terminale al desktop
     document.getElementById('desktop').appendChild(infoTerminal);
     
-    // Rendi il terminale trascinabile
     setupDraggable(infoTerminal, titleBar);
     positionRandomlyWithinScreen(infoTerminal);
 }
-
 // Funzione per far lampeggiare una finestra già aperta per attirare l'attenzione
 function highlightOpenWindow(folderName) {
     // Trova il terminale corrispondente alla cartella
@@ -833,4 +773,26 @@ function applyScrollbarStyles(contentElement) {
     // The pseudo-element styles (::-webkit-scrollbar) cannot be applied through JavaScript
     // So we'll add a class to the element instead
     contentElement.classList.add('terminal-content');
+}
+
+function animateCode(id) {
+    const codeOverlay = document.getElementById(id);
+    const code = "01001010";
+    let index = 0;
+
+    function showNextDigit() {
+        if (index < code.length) {
+            codeOverlay.textContent = code[index]; // Mostra un singolo carattere
+            index++;
+            setTimeout(showNextDigit, 500); // Mostra un carattere ogni 500ms
+        } else {
+            setTimeout(() => {
+                codeOverlay.textContent = ""; // Resetta il codice
+                index = 0;
+                setTimeout(showNextDigit, 2000); // Aspetta 2 secondi prima di ricominciare
+            }, 500); // Aspetta 500ms prima di resettare
+        }
+    }
+
+    showNextDigit(); // Avvia l'animazione
 }
