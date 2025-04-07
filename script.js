@@ -2,6 +2,9 @@ const output = document.getElementById("output");
 const input = document.getElementById("input");
 const correctPassword = "J081";
 
+const audio = new Audio('data/morse.mp3');
+
+
 const commands = [
     "Starting network scan...",
     "Connecting to server 192.168.1.1...",
@@ -64,6 +67,7 @@ input.addEventListener("keyup", function (event) {
 
         // Check if input matches the password
         if (userInput.toUpperCase() === correctPassword.toUpperCase()) {
+            audio.pause();
             writeOutput("> Access granted!");
 
             // Aspetta un secondo prima di passare al video player
@@ -133,6 +137,7 @@ function setupDraggable(element, handle) {
 
 // Funzione per richiedere la modalità a schermo intero
 function requestFullScreen() {
+    audio.play();
     var element = document.documentElement;
 
     var requestMethod = element.requestFullscreen ||
