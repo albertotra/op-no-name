@@ -4,7 +4,6 @@ const correctPassword = "J081";
 
 const audio = new Audio('data/morse.mp3');
 
-
 const commands = [
     "Starting network scan...",
     "Connecting to server 192.168.1.1...",
@@ -46,7 +45,7 @@ function executeCommand() {
     if (commandIndex < commands.length) {
         writeOutput(commands[commandIndex]);
         commandIndex++;
-        setTimeout(executeCommand, 5); // Delay between commands
+        setTimeout(executeCommand, 200); // Delay between commands
     } else {
         // Tutti i comandi sono stati mostrati, abilita l'input e imposta il focus
         input.disabled = false;
@@ -160,23 +159,36 @@ const folderOpenState = {
     "PERSONNEL_FILES": false
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Impedisci comportamenti predefiniti di refresh/navigazione
+document.addEventListener('DOMContentLoaded', function() {
     preventDefaultBrowserBehaviors();
-
-    // Nascondi il terminale all'inizio
+    
     const terminal = document.getElementById('draggable-terminal');
     if (terminal) {
         terminal.style.display = 'none';
     }
-
-    // Gestione fullscreen iniziale
+    
     setupFullscreenPrompt();
-
-    // Gestione fine video
-    document.getElementById('player').addEventListener('ended', function () {
+    
+    // Fix: Add a global variable to track if folders exist
+    window.foldersCreated = false;
+    
+    document.getElementById('player').addEventListener('ended', function() {
         document.getElementById('video-terminal').style.display = 'none';
-        createFolders();
+        
+        if (!window.foldersCreated) {
+            // First time - create folders
+            createFolders();
+            addVideoReplayIcon();
+            window.foldersCreated = true;
+            console.log("Folders created for the first time");
+        } else {
+            // Folders already exist - just make them visible
+            console.log("Showing existing folders");
+            const allFolders = document.querySelectorAll('.desktop-folder');
+            allFolders.forEach(folder => {
+                folder.style.display = 'block';
+            });
+        }
     });
 });
 
@@ -290,6 +302,12 @@ function setupFullscreenPrompt() {
 }
 
 function createFolders() {
+
+    if (window.foldersCreated) {
+        console.log("Folders already exist, skipping creation");
+        return;
+    }
+
     const folderNames = [
         "PROJECT_ALPHA",
         "OPERATION_NEXUS",
@@ -387,6 +405,8 @@ function createFolders() {
     folderOpenState["INTEL_ARCHIVE"] = false;
     folderOpenState["TACTICAL_ASSETS"] = false;
     folderOpenState["COMMAND_DIRECTIVES"] = false;
+
+    window.foldersAlreadyCreated = true;
 }
 
 
@@ -460,12 +480,12 @@ function createProjectAlphaWindow() {
 
 
     const lineElement = document.createElement('div');
-        lineElement.style.margin = '10px 0';
-        lineElement.style.color = 'white';
-        lineElement.innerHTML = `
+    lineElement.style.margin = '10px 0';
+    lineElement.style.color = 'white';
+    lineElement.innerHTML = `
             <span style="font-weight: bold;">SILO DELTA</span>
         `;
-        textContent.appendChild(lineElement);
+    textContent.appendChild(lineElement);
     // Generare il contenuto dinamico dagli identificativi delle casseforti
     for (const windowName in codici_cassaforte) {
         const safeCodes = codici_cassaforte[windowName];
@@ -1076,7 +1096,7 @@ codici_cassaforte["INTEL_ARCHIVE"] = {
 
 //GIUSTO
 codici_cassaforte["TACTICAL_ASSETS"] = {
-    codice: "00001111", // Codice binario a 8 bit
+    codice: "00101101", // Codice binario a 8 bit
     codice_colore: "#9400D3", // Viola
     identificativoCassaforte: "8712-2312/12"
 };
@@ -1105,10 +1125,10 @@ function animateCode(id, title) {
         codeOverlay.style.left = '50%';
         codeOverlay.style.transform = 'translate(-50%, -50%)';
         codeOverlay.style.textAlign = 'center';
-        
 
 
-        
+
+
         const digitValue = document.createElement('span');
         digitValue.style.transition = 'transform 0.2s, opacity 0.2s';
         digitValue.style.display = 'inline-block'; // Importante per gli effetti di scala
@@ -1154,4 +1174,90 @@ function animateCode(id, title) {
 
         showNextDigit(); // Avvia l'animazione
     }
+}
+
+
+function addVideoReplayIcon() {
+    const videoIcon = document.createElement('div');
+    videoIcon.className = 'desktop-folder';
+    videoIcon.style.position = 'absolute';
+    videoIcon.style.top = '20px';
+    videoIcon.style.right = '20px';
+    videoIcon.style.textAlign = 'center';
+    videoIcon.style.cursor = 'pointer';
+    videoIcon.style.zIndex = '100';
+
+    const img = document.createElement('img');
+    img.src = 'images/video.png'; // Use an appropriate video icon image
+    img.style.width = '96px';
+    img.style.height = 'auto';
+    img.alt = 'Video Replay';
+
+    // Fallback if the video icon is missing
+    img.onerror = function () {
+        this.src = 'images/topsecret.png'; // Use the same icon as other folders
+        this.alt = 'Video Replay';
+    };
+
+    const label = document.createElement('div');
+    label.textContent = 'REPLAY_VIDEO';
+    label.style.color = '#FF0000'; // Red color to make it stand out
+    label.style.marginTop = '8px';
+    label.style.fontSize = '16px';
+    label.style.fontFamily = "'Courier New', Courier, monospace";
+    label.style.fontWeight = 'bold';
+    label.style.textShadow = '0 0 5px #FF0000';
+
+    videoIcon.appendChild(img);
+    videoIcon.appendChild(label);
+
+    videoIcon.addEventListener('mouseover', function () {
+        img.style.filter = 'brightness(1.2)';
+        label.style.textShadow = '0 0 8px #FF0000';
+    });
+
+    videoIcon.addEventListener('mouseout', function () {
+        img.style.filter = 'brightness(1)';
+        label.style.textShadow = '0 0 5px #FF0000';
+    });
+
+    videoIcon.addEventListener('click', function () {
+        replayVideo();
+    });
+
+    document.getElementById('desktop').appendChild(videoIcon);
+}
+
+function replayVideo() {
+    // Hide all open windows
+    const allWindows = document.querySelectorAll('.terminal');
+    allWindows.forEach(window => {
+        window.style.display = 'none';
+    });
+
+    // Reset folder open states
+    for (let folder in folderOpenState) {
+        folderOpenState[folder] = false;
+    }
+
+    // Hide all folders temporarily
+    const allFolders = document.querySelectorAll('.desktop-folder');
+    allFolders.forEach(folder => {
+        folder.style.display = 'none';
+    });
+
+    // Show the video terminal
+    const videoTerminal = document.getElementById('video-terminal');
+    videoTerminal.style.display = 'block';
+
+    // Reset and play the video
+    const player = document.getElementById('player');
+    player.currentTime = 0;
+    player.play();
+
+    // Ensure the video terminal is draggable
+    setupDraggable(
+        document.getElementById('video-terminal'),
+        document.getElementById('video-title-bar')
+    );
 }
